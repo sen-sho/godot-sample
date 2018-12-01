@@ -1,0 +1,153 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Collections.gd" type="Script" id=1]
+[ext_resource path="res://Card.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Pager.tscn" type="PackedScene" id=3]
+
+[node name="Collections" type="Node2D"]
+
+position = Vector2( 100, 50 )
+scale = Vector2( 0.4, 0.4 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Card1" parent="." index="0" instance=ExtResource( 2 )]
+
+position = Vector2( -8.94836, -5.81275 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="Card2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 681.311, -0.0771236 )
+_sections_unfolded = [ "Pause", "Transform" ]
+
+[node name="Card3" parent="." index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 675.305, 611.004 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+
+[node name="Card4" parent="." index="3" instance=ExtResource( 2 )]
+
+position = Vector2( -4.59579, 606.633 )
+
+[node name="Card5" parent="." index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 1384.8, 3.28874 )
+
+[node name="Card6" parent="." index="5" instance=ExtResource( 2 )]
+
+position = Vector2( 1384.47, 617.111 )
+
+[node name="Pager" parent="." index="6" instance=ExtResource( 3 )]
+
+position = Vector2( 877.027, 1213.55 )
+
+[node name="Prev" type="Button" parent="." index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 593.0
+margin_top = 1202.0
+margin_right = 731.0
+margin_bottom = 1261.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PREV"
+flat = false
+align = 1
+
+[node name="Next" type="Button" parent="." index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1264.0
+margin_top = 1206.0
+margin_right = 1402.0
+margin_bottom = 1265.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "NEXT"
+flat = false
+align = 1
+
+[node name="Prev2" type="Button" parent="." index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 397.0
+margin_top = 1202.0
+margin_right = 535.0
+margin_bottom = 1261.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "PREV!!!"
+flat = false
+align = 1
+
+[node name="Next2" type="Button" parent="." index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1425.0
+margin_top = 1206.0
+margin_right = 1563.0
+margin_bottom = 1265.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "NEXT!!!!!"
+flat = false
+align = 1
+
+[connection signal="pressed" from="Prev" to="." method="_on_Prev_pressed"]
+
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+
+[connection signal="pressed" from="Prev2" to="." method="_on_Prev2_pressed"]
+
+[connection signal="pressed" from="Next2" to="." method="_on_Next2_pressed"]
+
+

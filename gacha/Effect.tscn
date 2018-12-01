@@ -1,0 +1,176 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Effect.gd" type="Script" id=1]
+[ext_resource path="res://data/img/001Bulbasaur.png" type="Texture" id=2]
+[ext_resource path="res://data/ball/monster_ball_01.png" type="Texture" id=3]
+[ext_resource path="res://data/ball/monster_ball_02.png" type="Texture" id=4]
+[ext_resource path="res://data/ball/monster_ball_03.png" type="Texture" id=5]
+[ext_resource path="res://data/ball/monster_ball_04.png" type="Texture" id=6]
+[ext_resource path="res://data/ball/monster_ball_05.png" type="Texture" id=7]
+[ext_resource path="res://data/ball/monster_ball_06.png" type="Texture" id=8]
+[ext_resource path="res://data/ball/monster_ball_07.png" type="Texture" id=9]
+[ext_resource path="res://data/ball/monster_ball_08.png" type="Texture" id=10]
+[ext_resource path="res://spark_particle2.png" type="Texture" id=11]
+[ext_resource path="res://pokemon-font.ttf" type="DynamicFontData" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "open",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "throw",
+"speed": 16.0
+} ]
+
+[sub_resource type="ParticlesMaterial" id=2]
+
+render_priority = 0
+trail_divisor = 1
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_align_y = true
+flag_rotate_y = false
+flag_disable_z = true
+spread = 75.0
+flatness = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.0
+angular_velocity = 0.0
+angular_velocity_random = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 40.0
+linear_accel_random = 0.0
+radial_accel = 0.0
+radial_accel_random = 0.0
+tangential_accel = 0.0
+tangential_accel_random = 0.0
+damping = 30.0
+damping_random = 0.0
+angle = 45.0
+angle_random = 0.0
+scale = 10.0
+scale_random = 0.0
+color = Color( 1, 1, 1, 1 )
+hue_variation = 0.0
+hue_variation_random = 0.0
+anim_speed = 10.0
+anim_speed_random = 1.0
+anim_offset = 0.0
+anim_offset_random = 0.0
+anim_loop = false
+_sections_unfolded = [ "Angle", "Angular Velocity", "Animation", "Damping", "Emission Shape", "Flags", "Gravity", "Hue Variation", "Initial Velocity", "Linear Accel", "Orbit Velocity", "Radial Accel", "Scale", "Spread", "Tangential Accel", "Trail" ]
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 16
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 12 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Resource", "Settings" ]
+
+[node name="Effect" type="Node2D"]
+
+script = ExtResource( 1 )
+start = false
+
+[node name="Monster" type="Sprite" parent="." index="0"]
+
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 509.914, 343.946 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Ball" type="KinematicBody2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 506.319, -80.297 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility", "collision" ]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Ball" index="0"]
+
+frames = SubResource( 1 )
+animation = "throw"
+frame = 4
+playing = true
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+
+[node name="PositionOpen" type="Position2D" parent="." index="2"]
+
+position = Vector2( 509.585, 543.067 )
+
+[node name="OpenEffect" type="Particles2D" parent="." index="3"]
+
+position = Vector2( 506.494, 500.495 )
+rotation = -1.5708
+scale = Vector2( 0.5, 0.5 )
+emitting = true
+amount = 128
+lifetime = 12.0
+one_shot = false
+preprocess = 0.0
+speed_scale = 8.0
+explosiveness = 0.0
+randomness = 0.0
+fixed_fps = 0
+fract_delta = true
+visibility_rect = Rect2( -100, -100, 200, 200 )
+local_coords = true
+draw_order = 0
+process_material = SubResource( 2 )
+texture = ExtResource( 11 )
+normal_map = null
+h_frames = 1
+v_frames = 1
+_sections_unfolded = [ "Material", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
+
+[node name="TimerEffect" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 3.0
+one_shot = false
+autostart = false
+
+[node name="Name" type="Label" parent="." index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 347.0
+margin_top = 67.0
+margin_right = 678.0
+margin_bottom = 128.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 3 )
+text = "アツヤキタマゴ"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "Size Flags", "Theme", "custom_fonts", "custom_styles" ]
+
+[connection signal="timeout" from="TimerEffect" to="." method="_on_TimerEffect_timeout"]
+
+
