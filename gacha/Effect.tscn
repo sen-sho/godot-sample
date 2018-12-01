@@ -93,7 +93,6 @@ __meta__ = {
 
 [node name="Ball" type="KinematicBody2D" parent="." index="1"]
 
-editor/display_folded = true
 position = Vector2( 506.319, -80.297 )
 input_pickable = false
 collision_layer = 1
@@ -105,7 +104,7 @@ _sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibi
 
 frames = SubResource( 1 )
 animation = "throw"
-frame = 4
+frame = 3
 playing = true
 _sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 

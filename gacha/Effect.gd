@@ -16,6 +16,10 @@ var bound = false
 var move = true
 var show = false
 
+enum EffectStatus { NONE, START, END }
+
+var status = EffectStatus.NONE
+
 func _ready():
 	
 	$Monster.hide()
@@ -24,14 +28,16 @@ func _ready():
 	var diff = abs(1 - $Monster.scale.x)
 	oneSecScale = diff / showTime
 	
-	# Called when the node is added to the scene for the first time.
-	# Initialization here
+	# 入力イベント利用設定
+	set_process_input(true)
+	
 	pass
 
 func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 	if show :
+		# 結果表示時は何もしない
 		return
 	
 	if !move :
@@ -67,6 +73,7 @@ func showItem(delta):
 		current = 1
 		$Monster.modulate = Color(1, 1, 1, 1)
 		show = true
+		status = EffectStatus.END
 	else:
 		$Monster.scale = Vector2(current, current)
 	
@@ -86,6 +93,7 @@ func show(no):
 	loadData(no)
 	
 	start = true
+	status = EffectStatus.START
 	
 	pass
 
@@ -116,3 +124,25 @@ func loadData(no):
 	$Monster.texture = load("res://data/img/" + id + ename + ".png")
 	
 	pass
+
+func _input(event):
+	if status == EffectStatus.NONE:
+		return
+	
+	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
+		# クリック時のイベント
+		if status == EffectStatus.END:
+			# 結果表示時の場合、上位画面に戻す。
+			Utils.setScene("res://Stub.tscn")
+		else:
+			# エフェクト中の場合、スキップ
+			$Monster.modulate = Color(1, 1, 1, 1)
+			$Monster.scale = Vector2(1, 1)
+			$Name.show()
+			show = true
+			status = EffectStatus.END
+			$Monster.show()
+			$Ball.hide()
+			$OpenEffect.hide()
+	pass
+
